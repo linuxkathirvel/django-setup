@@ -1,0 +1,10 @@
+DROP DATABASE IF EXISTS django_project_db;
+CREATE DATABASE django_project_db;
+REASSIGN OWNED BY django_user TO postgres;
+DROP OWNED BY django_user;
+DROP USER IF EXISTS django_user;
+CREATE USER django_user WITH PASSWORD 'password';
+ALTER ROLE django_user SET client_encoding TO 'utf8';
+ALTER ROLE django_user SET default_transaction_isolation TO 'read committed';
+ALTER ROLE django_user SET timezone TO 'UTC';
+GRANT ALL PRIVILEGES ON DATABASE django_project_db TO django_user;
